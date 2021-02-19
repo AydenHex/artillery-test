@@ -1,0 +1,17 @@
+config:
+  target: "http://192.168.1.15:8080/mybatis-jpetstore-6.0.1"
+  phases:
+    - duration: 60
+      arrivalRate: 5
+      name: Warm up
+    - duration: 60
+      arrivalRate: 5
+      rampTo: 50
+      name: Ramp up load
+    - duration: 120
+      arrivalRate: 50
+      name: Sustained load
+scenarios:
+  - flow:
+      - get:
+          url: "/actions/Catalog.action?viewCategory=&categoryId=DOGS"
